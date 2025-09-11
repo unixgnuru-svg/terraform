@@ -19,4 +19,13 @@ resource "aws_instance" "example"{
         ENV = "DEV"
         Project = "Terraform"
     }
+    ebs_block_device {
+        device_name = "/dev/xvdb"
+        volume_size = 8
+        volume_type = "gp3"
+        delete_on_termination = true
+        tags = {
+            Name = "example-ebs"
+           } 
+      }
 }
