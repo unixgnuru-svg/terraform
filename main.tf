@@ -1,4 +1,9 @@
 terraform {
+        backend "s3" {
+                bucket = "howdy123456"
+                key = "terraform.tfstate"
+                region = "us-east-1"
+        }
     required_providers{
         aws = {
             source = "hashicorp/aws"
@@ -8,7 +13,7 @@ terraform {
 }
 provider "aws" {
     region = "us-east-1"
-       
+
 }
 
 resource "aws_instance" "example"{
@@ -26,6 +31,6 @@ resource "aws_instance" "example"{
         delete_on_termination = true
         tags = {
             Name = "example-ebs"
-           } 
+           }
       }
 }
